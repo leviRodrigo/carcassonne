@@ -46,6 +46,12 @@ public class TestRio {
 		ocorreExcecaoRio(() -> verificarRio("LAGO"), "Não pode existir dois lagos consecutivos");
 	}
 	
+	@Test //#05
+	public void DuasNascentesSeguidas() {
+		ocorreExcecaoRio(() -> verificarRio("NASCENTE"), "Não pode existir duas nascentes consecutivos");
+	}
+	
+	
 	private void ocorreExcecaoRio(ExceptionThrower et, String mensagem) {
 		ocorreExcecao(et).tipoExcecao(ExcecaoJogo.class).mensagem(mensagem);
 	}
