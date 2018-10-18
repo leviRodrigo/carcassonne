@@ -40,7 +40,19 @@ public class TestRio {
 	public void FinalizarRio() {
 		ocorreExcecaoRio(() -> verificarRio("LAGO"), "Rio só pode ser finalizado com lago"); 
 	}
+	@Test //#04
+	public void DoisLagosSeguidos() {
+		ocorreExcecaoRio(() -> verificarRio("LAGO"), "Não pode existir dois lagos consecutivos");
+	}
 	
+	@Test //#05
+	public void DuasNascentesSeguidas() {
+		ocorreExcecaoRio(() -> verificarRio("NASCENTE"), "Não pode existir duas nascentes consecutivos");
+	}
+	@Test //#06
+	public void PosicionarLago() {
+		ocorreExcecaoRio(() -> verificarRio("LAGO"), "Lago so pode ser posicionado depois de um tile rio");
+	}
 	
 	private void ocorreExcecaoRio(ExceptionThrower et, String mensagem) {
 		ocorreExcecao(et).tipoExcecao(ExcecaoJogo.class).mensagem(mensagem);
